@@ -40,6 +40,22 @@ public class EmployeeServlet extends HttpServlet {
 		String uid = request.getParameter("userId").toString();
 		String action =  request.getParameter("action").toString();
 		
+		try {
+			
+		if(!action.isEmpty() && action.contains("edit")) {
+			if(!uid.isEmpty() &&  uid != null) {
+				
+				
+				
+			}
+		}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/welcome.jsp");
 		rd.forward(request, response);
 		
@@ -49,40 +65,36 @@ public class EmployeeServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		int result = 0;
-		List<EmployeePojo> empList =  new ArrayList<EmployeePojo>();
-		EmployeePojo emp = new EmployeePojo();
-		try {
-			
-			String fullName = request.getParameter("firstName") + " " + request.getParameter("lastName"); 
-			emp.setId(1L);
-			emp.setUserName(fullName);
-			emp.setEmail(request.getParameter("email"));
-			emp.setPassword(request.getParameter("password"));
-			
-			result = dao.registerEmployee(emp);
-			
-			// empList =	dao.fetchListOfUser();
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e.getMessage());
-			response.sendRedirect("Error.jsp");
-		}
-		if(result != 0) {
-		//request.setAttribute("EmplList", empList);
-		RequestDispatcher rd = request.getRequestDispatcher("Greet.jsp");
-		rd.forward(request, response);
-		}
-		else { 
-		request.setAttribute("emp", emp.getUserName());
-		RequestDispatcher rd = request.getRequestDispatcher("Error.jsp");
-		rd.forward(request, response);
-		}
-		// response.sendRedirect("Greet.jsp");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		
-	}
+		doGet(request, response);
+		
+		
+		
+		
+		
+		/*
+		 * // TODO Auto-generated method stub int result = 0; List<EmployeePojo> empList
+		 * = new ArrayList<EmployeePojo>(); EmployeePojo emp = new EmployeePojo(); try {
+		 * 
+		 * String fullName = request.getParameter("firstName") + " " +
+		 * request.getParameter("lastName"); emp.setId(1L); emp.setUserName(fullName);
+		 * emp.setEmail(request.getParameter("email"));
+		 * emp.setPassword(request.getParameter("password"));
+		 * 
+		 * result = dao.registerEmployee(emp);
+		 * 
+		 * // empList = dao.fetchListOfUser(); } catch (Exception e) { // TODO: handle
+		 * exception System.out.println(e.getMessage());
+		 * response.sendRedirect("Error.jsp"); } if(result != 0) {
+		 * //request.setAttribute("EmplList", empList); RequestDispatcher rd =
+		 * request.getRequestDispatcher("Greet.jsp"); rd.forward(request, response); }
+		 * else { request.setAttribute("emp", emp.getUserName()); RequestDispatcher rd =
+		 * request.getRequestDispatcher("Error.jsp"); rd.forward(request, response); }
+		 * // response.sendRedirect("Greet.jsp");
+		 * 
+		 */}
 
 	
 }

@@ -34,8 +34,8 @@ body {
 <body background="#ADB1A9">
 
 <div >
-	<form action="<%=request.getContextPath()%>/register" method="post"
-		align="center"  style="background-image: url('im.jpg');">
+	<form action="<%=request.getContextPath()%>/test?action=insert" method="post" name="action" value="insert"
+		align="center"  style="background-image: url('im.jpg');" >
 		<table style="width: 80%">
 			<tr>
 				<td>FirstName</td>

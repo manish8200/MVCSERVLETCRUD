@@ -9,17 +9,21 @@
 <head>
 <style type="text/css">
 body {
-	background-image: url("images/im.jpg");
+	background-image: url("/DummyJSP/WebContent/im.jpg");
 }
-.no-background {
-    background-image: url("images/blank.jpg");
-}
+
 </style>
 
 <meta charset="ISO-8859-1">
 <title>WelCome Page</title>
 </head>
 <body background="im.jpg">
+	
+	
+		
+<h2>
+	 <td><a href="<%=request.getContextPath()%>/welcome.jsp">Add User</a> </td>
+</h2>
 	 <sql:setDataSource var="myDS" driver="com.mysql.jdbc.Driver"
 	 url="jdbc:mysql://localhost:3306/myusers?useSSL=false"
 		user="root" password="root" />
@@ -35,13 +39,15 @@ body {
                 <th>UserNmae</th>
                 <th>Email</th>
                 <th>Password</th>
-            </tr>
+            </tr>	
             <c:forEach var="user" items="${listUsers.rows}">
                 <tr>
                     <td><c:out value="${user.UserName}" /></td>
                     <td><c:out value="${user.Email}" /></td>
                     <td><c:out value="${user.Password}" /></td>
-                    <td><a href="register?action=edit&userId=${user.Id}">Edit User</a> </td>
+                    <td><a href="<%=request.getContextPath()%>/test?action=editform&userId=${user.Id}">Edit User</a> </td> <br>
+                    <td><a href="<%=request.getContextPath()%>/test?action=delete&userId=${user.Id}">Delete User</a> </td>
+                    
                 </tr>
             </c:forEach>
         </table>
